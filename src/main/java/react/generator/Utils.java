@@ -1,8 +1,10 @@
-package react.generator;
+package io.clickhandler.reactGwt.generator;
 
-//import com.google.common.io.Files;
+import com.google.common.io.Files;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +25,7 @@ public class Utils {
     }
 
     public static void generateProps(String className, boolean isGeneric, String file) throws IOException {
-        final List<String> lines = null;//Files.readLines(new File(file), Charset.defaultCharset());
+        final List<String> lines = Files.readLines(new File(file), Charset.defaultCharset());
 
         List<PropDef> list = new ArrayList<>();
 
