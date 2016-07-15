@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class AbstractCamberBasicSelect<VALUE, P extends AbstractCamberBasicSelect.CamberSelectProps<VALUE>> extends Component<P, AbstractCamberBasicSelect.State<VALUE>> {
 //    private final Loggly log = Loggly.get(AbstractCamberBasicSelect.class);
@@ -66,7 +65,7 @@ public abstract class AbstractCamberBasicSelect<VALUE, P extends AbstractCamberB
                         });
                         $this.props.getOnMultipleValueChanged().run(null);
                     } else {
-                        Map<String, VALUE> selectedDataMap = new HashMap<>();
+                        HashMap<String, VALUE> selectedDataMap = new HashMap<>();
                         List<VALUE> values = new ArrayList<>();
                         for (Select2Data d : select2Datas) {
                             VALUE value = $this.state.getSelectedDataMap().get(d.getId());
@@ -103,7 +102,7 @@ public abstract class AbstractCamberBasicSelect<VALUE, P extends AbstractCamberB
                         }
 
                         if (value != null) {
-                            Map<String, VALUE> selectedDataMap = new HashMap<>();
+                            HashMap<String, VALUE> selectedDataMap = new HashMap<>();
                             selectedDataMap.put(select2Datas[0].getId(), value);
                             $this.setState(s -> {
                                 s.setSelectedDataMap(selectedDataMap);
@@ -312,16 +311,16 @@ public abstract class AbstractCamberBasicSelect<VALUE, P extends AbstractCamberB
         void setSelect2Value(Select2Data[] select2Value);
 
         @JsProperty
-        Map<String, V> getSelectedDataMap();
+        HashMap<String, V> getSelectedDataMap();
 
         @JsProperty
-        void setSelectedDataMap(Map<String, V> dataMap);
+        void setSelectedDataMap(HashMap<String, V> dataMap);
 
         @JsProperty
-        Map<String, V> getDataMap();
+        HashMap<String, V> getDataMap();
 
         @JsProperty
-        void setDataMap(Map<String, V> dataMap);
+        void setDataMap(HashMap<String, V> dataMap);
 
         @JsProperty
         Timer getDebounceTimer();

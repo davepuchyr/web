@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Clay Molocznik
  */
 public abstract class RoutesBuilder {
-    private final Map<String, Reg> regs = new HashMap<>();
+    private final HashMap<String, Reg> regs = new HashMap<>();
     @Inject
     Provider<RouteGatekeeper> routeGatekeeperProvider;
 
@@ -87,7 +87,7 @@ public abstract class RoutesBuilder {
         // Init top level Reg list.
         // These Routes will be the ones supplied.
         // All other's will be descendants of these.
-        final List<Reg> topLevel = new ArrayList<>();
+        final ArrayList<Reg> topLevel = new ArrayList<>();
 
         for (Reg reg : regs.values()) {
             // Get the parent RouteProxy.
@@ -185,7 +185,7 @@ public abstract class RoutesBuilder {
     private final static class Reg {
         private final Route route;
         private final RouteProxy<?> proxy;
-        private List<Reg> children = null;
+        private ArrayList<Reg> children = null;
 
         public Reg(Route route, RouteProxy<?> proxy) {
             this.route = route;

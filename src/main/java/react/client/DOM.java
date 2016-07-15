@@ -3,7 +3,7 @@ package react.client;
 import common.client.Func;
 import jsinterop.annotations.JsFunction;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +15,7 @@ public interface DOM {
         return props;
     }
 
-    static Object[] toObjectArray(List<Object> list) {
+    static Object[] toObjectArray(ArrayList<Object> list) {
         Object[] params = new Object[list.size()];
         for (int i = 0; i < list.size(); i++) {
             params[i] = list.get(i);

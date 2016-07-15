@@ -18,9 +18,9 @@ public class WsDispatcher {
     private final static int DEFAULT_SUB_TIMEOUT = 5_000;
     private final Bus bus;
     private final String url;
-    private final Queue<Outgoing> pendingQueue = new LinkedList<>();
+    private final LinkedList<Outgoing> pendingQueue = new LinkedList<>();
     private final LinkedHashMap<Double, Outgoing> calls = new LinkedHashMap<>();
-    private final Map<String, AddressSubscription> subMap = new HashMap<>();
+    private final HashMap<String, AddressSubscription> subMap = new HashMap<>();
     private Ws webSocket;
     private int reaperMillis = 500;
     private Timer reaperTimer;

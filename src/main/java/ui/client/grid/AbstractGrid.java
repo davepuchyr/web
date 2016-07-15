@@ -10,7 +10,9 @@ import react.client.ReactComponent;
 import react.client.ReactElement;
 
 import javax.inject.Inject;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import static react.client.DOM.div;
 
@@ -44,7 +46,7 @@ public abstract class AbstractGrid<D, P extends AbstractGrid.Props<D>> extends C
                                         return;
                                     }
 
-                                    List<D> selected = new ArrayList<>();
+                                    ArrayList<D> selected = new ArrayList<>();
                                     if (selectAll) {
                                         selected.addAll($this.state.getData());
                                     }
@@ -53,7 +55,7 @@ public abstract class AbstractGrid<D, P extends AbstractGrid.Props<D>> extends C
                                     }
                                 })
                                 .onSortChanged((column, sort) -> {
-                                    List<GridColumn> cols = $this.state.getColumns();
+                                    ArrayList<GridColumn> cols = $this.state.getColumns();
                                     for (GridColumn c : cols) {
                                         if (!c.getId().equals(column.getId())) {
                                             c.setSort(GridSort.NONE);
@@ -203,8 +205,11 @@ public abstract class AbstractGrid<D, P extends AbstractGrid.Props<D>> extends C
 
     @Override
     public State<D> getInitialState() {
+        ArrayList<GridColumn> columns = new ArrayList<>();
+        for (GridColumn column : getColumns())
+            columns.add(column);
         State<D> s = super.getInitialState();
-        s.setColumns(Arrays.asList(getColumns()));
+        s.setColumns(columns);
         s.setData(new ArrayList<>());
         s.setPageIdx(0.);
         s.setPageIdxMap(new HashMap<>());
@@ -297,7 +302,7 @@ public abstract class AbstractGrid<D, P extends AbstractGrid.Props<D>> extends C
 
                     // update page idx map
                     if (pageIdx > 0) {
-                        Map<Double, D> pageIdxMap = $this.state.getPageIdxMap();
+                        HashMap<Double, D> pageIdxMap = $this.state.getPageIdxMap();
                         D lastRecord = data != null ? data.get(data.size() - 1) : null;
                         pageIdxMap.put($this.state.getPageIdx(), lastRecord);
                         s.setPageIdxMap(pageIdxMap);
@@ -379,10 +384,10 @@ public abstract class AbstractGrid<D, P extends AbstractGrid.Props<D>> extends C
     @JsType(isNative = true)
     public interface State<D> {
         @JsProperty
-        List<GridColumn> getColumns();
+        ArrayList<GridColumn> getColumns();
 
         @JsProperty
-        void setColumns(List<GridColumn> columns);
+        void setColumns(ArrayList<GridColumn> columns);
 
         @JsProperty
         List<D> getData();
@@ -403,10 +408,10 @@ public abstract class AbstractGrid<D, P extends AbstractGrid.Props<D>> extends C
         void setPageIdx(Double pageIdx);
 
         @JsProperty
-        Map<Double, D> getPageIdxMap();
+        HashMap<Double, D> getPageIdxMap();
 
         @JsProperty
-        void setPageIdxMap(Map<Double, D> pageIdxMap);
+        void setPageIdxMap(HashMap<Double, D> pageIdxMap);
 
         @JsProperty
         String getPendingFetchGuid();

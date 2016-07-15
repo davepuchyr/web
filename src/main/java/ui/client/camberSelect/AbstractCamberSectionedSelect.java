@@ -2,12 +2,12 @@ package ui.client.camberSelect;
 
 import common.client.Func;
 import common.client.Jso;
+import react.client.ReactComponent;
 import ui.client.select2.Select2Data;
 import ui.client.select2.Select2DataAdapterResponse;
-import react.client.ReactComponent;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class AbstractCamberSectionedSelect<P extends AbstractCamberBasicSelect.CamberSelectProps<AbstractCamberSectionedSelect.ValueObject>> extends AbstractCamberBasicSelect<AbstractCamberSectionedSelect.ValueObject, P> {
 
@@ -32,7 +32,7 @@ public abstract class AbstractCamberSectionedSelect<P extends AbstractCamberBasi
     }
 
     public interface FetchCompletionHandler {
-        void onComplete(List<Select2Data> select2Datas, Map<String, ValueObject> dataMap);
+        void onComplete(List<Select2Data> select2Datas, HashMap<String, ValueObject> dataMap);
     }
 
     public static class ValueObject {

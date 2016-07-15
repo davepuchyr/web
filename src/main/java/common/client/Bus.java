@@ -8,14 +8,13 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  */
 @Singleton
 public class Bus {
-    private final Map<String, GwtEvent.Type> map = new HashMap<>();
+    private final HashMap<String, GwtEvent.Type> map = new HashMap<>();
     private EventBus eventBus = new SimpleEventBus();
 
     @Inject

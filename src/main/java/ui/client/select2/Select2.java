@@ -65,7 +65,7 @@ public class Select2 extends Component<Select2.Props, Select2.State> {
         super.componentDidMount($this);
 
         Func.Run1<Select2NativeEvent<Select2EventArgs>> onSelect = e -> {
-            Map<String, Select2Data> valueMap = $this.state.getValue();
+            HashMap<String, Select2Data> valueMap = $this.state.getValue();
             if (!$this.props.getOptions().isMultiple()) {
                 valueMap.clear();
             }
@@ -79,7 +79,7 @@ public class Select2 extends Component<Select2.Props, Select2.State> {
         };
 
         Func.Run1<Select2NativeEvent<Select2EventArgs>> onUnSelect = e -> {
-            Map<String, Select2Data> valueMap = $this.state.getValue();
+            HashMap<String, Select2Data> valueMap = $this.state.getValue();
             valueMap.remove(e.getParams().getData().getId());
             $this.setState(s -> s.setValue(valueMap));
             if ($this.props.getOnValueChange() != null) {
@@ -92,7 +92,7 @@ public class Select2 extends Component<Select2.Props, Select2.State> {
 
         if ($this.props.getValue() != null) {
             // todo this probably wont work - needs to be delayed or include in select2() call - same way as open / closed are
-            Map<String, Select2Data> updatedMap = new HashMap<>();
+            HashMap<String, Select2Data> updatedMap = new HashMap<>();
             for (Select2Data d : $this.props.getValue()) {
                 updatedMap.put(d.getId(), d);
             }
@@ -136,7 +136,7 @@ public class Select2 extends Component<Select2.Props, Select2.State> {
 
             // diff, set value
             if (propIds.size() != curValueSet.size() || !curValueSet.containsAll(propIds)) {
-                Map<String, Select2Data> updatedMap = new HashMap<>();
+                HashMap<String, Select2Data> updatedMap = new HashMap<>();
                 for (Select2Data d : nextProps.getValue()) {
                     updatedMap.put(d.getId(), d);
                 }
@@ -373,9 +373,9 @@ public class Select2 extends Component<Select2.Props, Select2.State> {
     @JsType(isNative = true)
     public interface State {
         @JsProperty
-        Map<String, Select2Data> getValue();
+        HashMap<String, Select2Data> getValue();
 
         @JsProperty
-        void setValue(Map<String, Select2Data> value);
+        void setValue(HashMap<String, Select2Data> value);
     }
 }

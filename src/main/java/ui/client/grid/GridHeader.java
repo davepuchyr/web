@@ -12,7 +12,7 @@ import react.client.ReactElement;
 import ui.client.Checkbox;
 
 import javax.inject.Inject;
-import java.util.List;
+import java.util.ArrayList;
 
 import static react.client.DOM.div;
 
@@ -121,7 +121,7 @@ public class GridHeader extends Component<GridHeader.Props, GridHeader.State> {
         public boolean selectionEnabled;
         public boolean reorderEnabled;
         public boolean allSelected;
-        public List<GridColumn> columns;
+        public ArrayList<GridColumn> columns;
         public Func.Run1<Boolean> onAllSelectedChanged;
         public Func.Run2<GridColumn, GridSort> onSortChanged;
         
@@ -156,12 +156,12 @@ public class GridHeader extends Component<GridHeader.Props, GridHeader.State> {
         }
 
         @JsOverlay
-        public final List<GridColumn> getColumns() {
+        public final ArrayList<GridColumn> getColumns() {
             return columns;
         }
 
         @JsOverlay
-        public final void setColumns(List<GridColumn> columns) {
+        public final void setColumns(ArrayList<GridColumn> columns) {
             this.columns = columns;
         }
 
@@ -204,7 +204,7 @@ public class GridHeader extends Component<GridHeader.Props, GridHeader.State> {
         }
 
         @JsOverlay
-        public final Props columns(final List<GridColumn> columns) {
+        public final Props columns(final ArrayList<GridColumn> columns) {
             this.columns = columns;
             return this;
         }

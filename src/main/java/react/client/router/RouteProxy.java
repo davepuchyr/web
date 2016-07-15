@@ -325,7 +325,7 @@ public class RouteProxy<T> {
         if (memoizedParentPath != null)
             return memoizedParentPath;
 
-        final List<RouteProxy> ancesters = new ArrayList<>();
+        final ArrayList<RouteProxy> ancesters = new ArrayList<>();
 
         RouteProxy parent = parent();
         if (parent == null) {
